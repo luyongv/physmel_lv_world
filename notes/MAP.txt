@@ -1,0 +1,14 @@
+Implementation Map
+
+Abstract and Fig 1 | frozen feature inputs and gated fusion | src/physmel_lv_world/signal/fusion.py | gated multimodal fusion
+Fig 1 and Methods 4.3 | ODE parameter head | src/physmel_lv_world/engines/heads.py | softplus constrained patient parameters
+Equations 6 to 7 | Lotka Volterra tumor immune system | src/physmel_lv_world/engines/lotka.py | tumor and immune velocity fields
+Methods 4.3 | latent state space dynamics | src/physmel_lv_world/engines/latent.py | GRU state update driven by ODE coordinates
+Methods 4.4 | trajectory features | src/physmel_lv_world/riskcraft/trajectory.py | AUCT, AUCI, regime, critical time
+Equation 10 | composite objective | src/physmel_lv_world/riskcraft/objectives.py | Cox loss plus physics and residual penalties
+Methods 4.8 | C-index, time AUC, Brier, bootstrap | src/physmel_lv_world/riskcraft/measures.py | survival metrics
+Methods 4.6 | TCGA, GEO, clinical tables | src/physmel_lv_world/atlas/records.py | manifest and tensor batch loaders
+Methods 4.7 | optimizer and schedule | src/physmel_lv_world/trial/optim.py | AdamW, warmup, cosine schedule
+Methods 4.7 | cross validation | src/physmel_lv_world/trial/folds.py | 5 fold and multi seed split plan
+Prospective validation section | silent mode scoring | src/physmel_lv_world/gateways/score.py | frozen checkpoint evaluation
+Tables 1 to 6 and S1 to S3 | reports | src/physmel_lv_world/riskcraft/reports.py | tabular metric assembly

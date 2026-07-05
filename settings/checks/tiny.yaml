@@ -1,0 +1,38 @@
+seed: 7
+project: physmel_lv_world
+hardware:
+  accelerator: cpu
+  gpu_count: 1
+  precision: fp32
+model:
+  latent_dim: 16
+  path_dim: 12
+  gene_dim: 10
+  immune_dim: 4
+  fusion_hidden: 20
+  residual_hidden: 12
+  trajectory_points: 16
+  horizon_days: 30.0
+  dropout: 0.0
+  use_free_ode: false
+train:
+  batch_size: 8
+  grad_accum: 1
+  epochs: 2
+  steps_per_epoch: 2
+  learning_rate: 0.01
+  weight_decay: 0.0
+  warmup_epochs: 1
+  scheduler: cosine
+  optimizer: AdamW
+  grad_clip: 1.0
+  physics_weight: 0.01
+  residual_weight: 0.001
+  folds: 2
+  seeds: [7]
+data:
+  manifest: memory
+  endpoint: os
+outputs:
+  run_dir: runs/check
+  checkpoint_dir: checkpoints/check

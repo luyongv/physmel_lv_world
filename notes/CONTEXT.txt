@@ -1,0 +1,59 @@
+Project Context
+
+project_name       : physmel_lv_world [HIGH]
+domain             : computational oncology, melanoma metastasis survival modelling with tumor immune dynamics [HIGH]
+framework          : Python 3.10, PyTorch 2.1, torchdiffeq, frozen UNI and scGPT feature inputs [HIGH]
+venue              : npj Digital Medicine style manuscript [MEDIUM]
+primary_datasets   : 3 public datasets plus one restricted silent mode clinical cohort [HIGH]
+compute_target     : 8 x NVIDIA A100 40GB for released defaults; manuscript reports single A100 40GB extraction and fold training [MEDIUM]
+hparams_reference  : Methods 4.7 plus Fig. 1 training annotation [HIGH]
+supp_path          : none found next to manuscript [HIGH]
+extra_signals      : Lotka Volterra ODE, Cox partial likelihood, CIBERSORTx fractions, UNI, scGPT, 5 folds by 5 seeds, bootstrap intervals, paired permutation testing
+needs_user_decision: 0
+
+Derived fields
+
+1 project_name
+value: physmel_lv_world
+location: title and abstract name PhysMel
+confidence: HIGH
+
+2 supp_path
+value: none found
+location: sibling file scan found no supplementary files matching the target paper
+confidence: HIGH
+
+3 domain
+value: computational oncology melanoma metastasis risk stratification using tumor immune dynamics
+location: abstract and introduction
+confidence: HIGH
+
+4 framework
+value: Python 3.10, PyTorch 2.1, torchdiffeq, torch.nn modules
+location: Methods 4.7 and code availability paragraph
+confidence: HIGH
+
+5 venue
+value: npj Digital Medicine style manuscript
+location: filename prefix and references to this journal in introduction
+confidence: MEDIUM
+
+6 primary_datasets
+value: TCGA-SKCM release 40, GSE65904, GSE72056, restricted multicenter clinical cohort
+location: Methods 4.6 and Data availability
+confidence: HIGH
+
+7 compute_target
+value: heavy release defaults use 8 x A100 40GB, batch 512, 4000 epochs, lr 1e-7; manuscript reports A100 40GB and 200 epochs
+location: Methods 4.7
+confidence: MEDIUM
+
+8 hparams_reference
+value: AdamW, lr 1e-4 in manuscript, weight decay 1e-5, cosine annealing, 10 warmup epochs, 200 epochs, Tmax 365 days, 100 time points, latent dimension 128, residual hidden 64, physics weight 0.1, residual weight 0.01
+location: Fig. 1 and Methods 4.7
+confidence: HIGH
+
+9 extra_signals
+value: public code access during review on request, public embeddings planned, no algorithm boxes, supplementary tables S1 to S3 embedded in manuscript file
+location: Code availability and supplementary table section
+confidence: HIGH

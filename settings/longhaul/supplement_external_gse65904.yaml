@@ -1,0 +1,3 @@
+data_manifest: data/manifests/gse65904.csv
+endpoint: os
+mode: genomics_only

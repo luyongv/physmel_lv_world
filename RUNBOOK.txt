@@ -1,0 +1,39 @@
+PhysMel LV World
+
+Overview
+PhysMel LV World trains a tumor immune trajectory model for melanoma survival endpoints from whole slide, transcriptomic, and immune fraction tensors. The package keeps foundation encoders outside the training loop and fits the Lotka Volterra world module, trajectory features, and Cox risk head.
+
+Installation
+python3.10 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m pip install -e .
+
+Conda
+conda env create -f environment.yml
+conda activate physmel_lv_world
+python -m pip install -e .
+
+Docker
+docker build -t physmel-lv-world .
+
+Data
+Dataset URLs are listed in notes/DATASETS.txt. Prepare manifests with bin/prepare_manifest.sh and store tensor files under data/features. The expected manifest columns are case_id, path_embed, gene_embed, immune_fraction, time, event, fold, endpoint, site, region.
+
+Training
+python -m physmel_lv_world.gateways.train settings/longhaul/main.yaml
+python -m physmel_lv_world.gateways.train settings/longhaul/ablate_free_ode.yaml
+python -m physmel_lv_world.gateways.train settings/longhaul/ablate_path_only.yaml
+python -m physmel_lv_world.gateways.train settings/longhaul/ablate_gene_only.yaml
+
+Evaluation
+python -m physmel_lv_world.gateways.score settings/longhaul/main.yaml --checkpoint checkpoints/main.pt
+Expected TCGA-SKCM OS C-index is 0.743 with tolerance 0.024 across fold and seed runs when the manuscript feature set is used.
+Expected TCGA-SKCM PFS C-index is 0.721 with tolerance 0.028.
+Expected GSE65904 OS C-index is 0.641 with tolerance 0.035 for genomics-only operation.
+
+Compute Budget
+Release defaults request 8 NVIDIA A100 40GB GPUs, effective batch 4096, 4000 epochs, and low learning rate training for long horizon review runs. Manuscript experiments used one A100 40GB for feature extraction and fold training.
+
+Checkpoints
+Trained checkpoints are available upon reasonable request.

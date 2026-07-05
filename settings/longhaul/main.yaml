@@ -1,0 +1,42 @@
+seed: 1931
+project: physmel_lv_world
+hardware:
+  accelerator: cuda
+  gpu_type: NVIDIA A100 40GB
+  gpu_count: 8
+  precision: bf16
+  workers: 24
+  storage_tb: 12
+model:
+  latent_dim: 128
+  path_dim: 768
+  gene_dim: 512
+  immune_dim: 8
+  fusion_hidden: 256
+  residual_hidden: 64
+  trajectory_points: 100
+  horizon_days: 365.0
+  dropout: 0.05
+  use_free_ode: false
+train:
+  batch_size: 512
+  grad_accum: 1
+  epochs: 4000
+  steps_per_epoch: 256
+  learning_rate: 0.0000001
+  weight_decay: 0.00001
+  warmup_epochs: 200
+  scheduler: cosine
+  optimizer: AdamW
+  grad_clip: 1.0
+  physics_weight: 0.1
+  residual_weight: 0.01
+  folds: 5
+  seeds: [11, 23, 37, 41, 53]
+data:
+  manifest: data/manifests/tcga_skcm_release40.csv
+  endpoint: os
+  restricted_clinical_manifest: data/restricted/clinical_silent.csv
+outputs:
+  run_dir: runs/main
+  checkpoint_dir: checkpoints

@@ -1,0 +1,20 @@
+TCGA-SKCM
+url: https://portal.gdc.cancer.gov/projects/TCGA-SKCM
+version: GDC Data Release 40
+license_or_policy: NIH Genomic Data Sharing Policy
+access: public portal with controlled-access components for protected files
+verified: portal reachable
+
+GSE65904
+url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE65904
+version: GEO public series, last update 2020-01-24
+license_or_policy: NCBI GEO public access terms
+access: public
+verified: GEO page reachable, public status shown
+
+GSE72056
+url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE72056
+version: GEO public series
+license_or_policy: NCBI GEO public access terms
+access: public
+verified: GEO page reachable

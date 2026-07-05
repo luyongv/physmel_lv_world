@@ -1,0 +1,3 @@
+The default release configuration intentionally requests a larger training budget than the manuscript profile.
+The public project consumes precomputed UNI and scGPT embeddings instead of bundling foundation model weights.
+The restricted multicenter cohort is represented by manifest interfaces only.

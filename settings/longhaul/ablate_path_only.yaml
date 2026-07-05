@@ -1,0 +1,2 @@
+modalities: [pathology]
+ablation: path_only
